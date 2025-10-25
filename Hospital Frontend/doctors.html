@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors - Hospital Management System</title>
+    <link rel="stylesheet" href="doctors.css">
+    <script src="auth.js"></script>
+    <script>
+        if (!hmsRequireAuth()) {
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">🏥 HMS</div>
+        <ul class="nav-links">
+            <li><a href="index.html"><span>Home</span></a></li>
+            <li><a href="patients.html"><span>Patients</span></a></li>
+            <li><a href="doctors.html" class="active"><span>Doctors</span></a></li>
+            <li><a href="appointments.html"><span>Appointments</span></a></li>
+            <li><a href="billings.html"><span>Billings</span></a></li>
+            <li><a href="rooms.html"><span>Rooms</span></a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="doctors-section">
+            <h1>Doctors Management</h1>
+
+            <!-- Add Doctor Form -->
+            <form id="addDoctorForm" class="animated-form">
+                <input type="text" id="name" placeholder="Name" required>
+                <input type="text" id="specialization" placeholder="Specialization" required>
+                <input type="text" id="phone" placeholder="Phone" required>
+                <input type="number" id="experience" placeholder="Experience (years)" required>
+                <button type="submit">Add Doctor</button>
+            </form>
+
+            <!-- Doctors Table -->
+            <div class="table-container">
+                <table id="doctorsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Specialization</th>
+                            <th>Phone</th>
+                            <th>Experience</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Doctors data will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="doctors.js"></script>
+</body>
+</html>

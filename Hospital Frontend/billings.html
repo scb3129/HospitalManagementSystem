@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billings - Hospital Management System</title>
+    <link rel="stylesheet" href="billings.css">
+    <script src="auth.js"></script>
+    <script>
+        if (!hmsRequireAuth()) {
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">🏥 HMS</div>
+        <ul class="nav-links">
+            <li><a href="index.html"><span>Home</span></a></li>
+            <li><a href="patients.html"><span>Patients</span></a></li>
+            <li><a href="doctors.html"><span>Doctors</span></a></li>
+            <li><a href="appointments.html"><span>Appointments</span></a></li>
+            <li><a href="billings.html" class="active"><span>Billings</span></a></li>
+            <li><a href="rooms.html"><span>Rooms</span></a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="billings-section">
+            <h1>Billing Management</h1>
+
+            <!-- Add/Edit Billing Form -->
+            <form id="billingForm" class="animated-form">
+                <select id="appointmentId" required>
+                    <option value="">Select Appointment</option>
+                </select>
+                <input type="number" id="consultationFee" placeholder="Consultation Fee" min="0" required>
+                <input type="number" id="medicineCharges" placeholder="Medicine Charges" min="0" required>
+                <input type="number" id="totalAmount" placeholder="Total Amount" readonly>
+                <input type="number" id="paidAmount" placeholder="Paid Amount" min="0" required>
+                <select id="status" required>
+                    <option value="Pending">Pending</option>
+                    <option value="Paid">Paid</option>
+                </select>
+                <button type="submit">Save Billing</button>
+            </form>
+
+            <!-- Billings Table -->
+            <div class="table-container">
+                <table id="billingsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Appointment</th>
+                            <th>Consultation Fee</th>
+                            <th>Medicine Charges</th>
+                            <th>Total Amount</th>
+                            <th>Paid Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="billings.js"></script>
+</body>
+</html>

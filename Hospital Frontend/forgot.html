@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Forgot Password - HMS</title>
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+  <div class="auth-container animated-container">
+    <h2 class="logo">🏥 HMS</h2>
+    <h3>Forgot Password</h3>
+    <form id="forgotForm">
+      <input id="email" type="email" placeholder="Your registered email" required />
+      <button type="submit">Send Reset Link</button>
+    </form>
+    <p><a href="login.html">Back to Login</a></p>
+    <p id="message" class="msg"></p>
+  </div>
+
+  <script>
+    const apiBase = "http://localhost:5224/api/admins";
+    document.getElementById("forgotForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const clientResetUrl = window.location.origin + "/reset.html";
+      try {
+        const res = await fetch(`${apiBase}/forgot`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, clientResetUrl })
+        });
+        const data = await res.json();
+        document.getElementById("message").innerText = data.message || "If the email exists, a reset link was sent.";
+        document.getElementById("message").style.color = "#27ae60"; // success message color
+        document.getElementById("message").classList.add("fade-message");
+      } catch (err) {
+        console.error(err);
+        document.getElementById("message").innerText = "Network error";
+        document.getElementById("message").style.color = "#c0392b"; // error message color
+      }
+    });
+  </script>
+</body>
+</html>

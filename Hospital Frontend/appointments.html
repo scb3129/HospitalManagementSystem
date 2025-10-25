@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments - Hospital Management System</title>
+    <link rel="stylesheet" href="appointments.css">
+    <script src="auth.js"></script>
+    <script>
+        if (!hmsRequireAuth()) {
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">🏥 HMS</div>
+        <ul class="nav-links">
+            <li><a href="index.html"><span>Home</span></a></li>
+            <li><a href="patients.html"><span>Patients</span></a></li>
+            <li><a href="doctors.html"><span>Doctors</span></a></li>
+            <li><a href="appointments.html" class="active"><span>Appointments</span></a></li>
+            <li><a href="billings.html"><span>Billings</span></a></li>
+            <li><a href="rooms.html"><span>Rooms</span></a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="appointments-section">
+            <h1>Appointments Management</h1>
+
+            <!-- Add/Edit Appointment Form -->
+            <form id="appointmentForm" class="animated-form">
+                <select id="patientId" required></select>
+                <select id="doctorId" required></select>
+                <input type="datetime-local" id="appointmentDate" required>
+                <button type="submit" id="submitBtn">Add Appointment</button>
+                <button type="button" id="cancelEditBtn" style="display:none;">Cancel Edit</button>
+            </form>
+
+            <!-- Appointments Table -->
+            <div class="table-container">
+                <table id="appointmentsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Appointment Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="appointments.js"></script>
+</body>
+</html>

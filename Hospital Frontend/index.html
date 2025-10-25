@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital Management System</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="auth.js"></script>
+  <script>
+    if (!hmsRequireAuth()) {
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="logo">🏥 HMS</div>
+    <ul class="nav-links">
+      <li><a href="patients.html">Patients</a></li>
+      <li><a href="doctors.html">Doctors</a></li>
+      <li><a href="appointments.html">Appointments</a></li>
+      <li><a href="billings.html">Billings</a></li>
+      <li><a href="rooms.html">Rooms</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="hero">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Welcome to Hospital Management System</h1>
+        <p>Streamline the process of managing Patients, Doctors, Appointments, and Billing effortlessly.</p>
+        <a href="patients.html" class="btn">Get Started</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

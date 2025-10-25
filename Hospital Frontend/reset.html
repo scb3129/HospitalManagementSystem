@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reset Password - HMS</title>
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Reset Password</h2>
+    <form id="resetForm">
+      <input id="email" type="email" placeholder="Email" required />
+      <input id="token" type="text" placeholder="Reset Token" required />
+      <input id="newPassword" type="password" placeholder="New Password" required />
+      <input id="confirmPassword" type="password" placeholder="Confirm Password" required />
+      <button type="submit">Reset Password</button>
+    </form>
+    <p id="message" class="msg"></p>
+  </div>
+
+  <script>
+    const apiBase = "http://localhost:5224/api/admins";
+
+    // prefill token & email if in querystring
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("token")) document.getElementById("token").value = params.get("token");
+    if (params.get("email")) document.getElementById("email").value = params.get("email");
+
+    document.getElementById("resetForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const token = document.getElementById("token").value;
+      const newPassword = document.getElementById("newPassword").value;
+      const confirm = document.getElementById("confirmPassword").value;
+      if (newPassword !== confirm) { document.getElementById("message").innerText = "Passwords do not match"; return; }
+      try {
+        const res = await fetch(`${apiBase}/reset`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, token, newPassword })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          document.getElementById("message").innerText = data || "Reset failed";
+          return;
+        }
+        document.getElementById("message").innerText = data.message || "Password reset. Please login.";
+      } catch (err) {
+        console.error(err);
+        document.getElementById("message").innerText = "Network error";
+      }
+    });
+  </script>
+</body>
+</html>

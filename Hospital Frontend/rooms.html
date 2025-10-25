@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rooms - Hospital Management System</title>
+    <link rel="stylesheet" href="rooms.css" />
+    <script src="auth.js"></script>
+    <script>
+        if (!hmsRequireAuth()) {
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">🏥 HMS</div>
+        <ul class="nav-links">
+            <li><a href="index.html"><span>Home</span></a></li>
+            <li><a href="patients.html"><span>Patients</span></a></li>
+            <li><a href="doctors.html"><span>Doctors</span></a></li>
+            <li><a href="appointments.html"><span>Appointments</span></a></li>
+            <li><a href="billings.html"><span>Billings</span></a></li>
+            <li><a href="rooms.html" class="active"><span>Rooms</span></a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="rooms-section">
+            <h1>Room Management</h1>
+
+            <!-- Add Room Form -->
+            <form id="addRoomForm" class="animated-form">
+                <input type="text" id="roomNumber" placeholder="Room Number (e.g., A101)" required />
+                <input type="text" id="bedNumber" placeholder="Bed Number (optional)" />
+                <button type="submit">Add Room</button>
+            </form>
+
+            <div class="table-container">
+                <table id="roomsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Room</th>
+                            <th>Bed</th>
+                            <th>Occupied</th>
+                            <th>Patient</th>
+                            <th>Assign</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="rooms.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+/* Reset & font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar */
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f7f8;
+}
+
+.sidebar {
+    width: 250px;
+    background: linear-gradient(to bottom, #6a11cb, #2575fc);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+}
+
+.sidebar .nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar .nav-links li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sidebar .nav-links li a:hover,
+.sidebar .nav-links li a.active {
+    background-color: rgba(255,255,255,0.2);
+    padding-left: 25px;
+}
+
+.sidebar .nav-links li a::before {
+    content: "•";
+    position: absolute;
+    left: 10px;
+    color: #ffd700;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.sidebar .nav-links li a:hover::before,
+.sidebar .nav-links li a.active::before {
+    opacity: 1;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Appointments Section */
+.appointments-section {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    animation: fadeIn 1s ease;
+}
+
+.appointments-section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2575fc;
+}
+
+/* Form */
+form#appointmentForm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    animation: slideDown 1s ease;
+    justify-content: center;
+}
+
+form#appointmentForm select,
+form#appointmentForm input[type="datetime-local"],
+form#appointmentForm button {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+form#appointmentForm select:focus,
+form#appointmentForm input:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 8px rgba(37,117,252,0.3);
+}
+
+form#appointmentForm button {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    flex: 1 1 100%;
+}
+
+form#appointmentForm button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+}
+
+#cancelEditBtn {
+    background-color: #c0392b;
+}
+#cancelEditBtn:hover {
+    background-color: #e74c3c;
+}
+
+/* Table */
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table th {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f4f7f8;
+}
+
+table tr:hover {
+    background-color: #e0f0ff;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+/* Action Buttons */
+table button:first-child {
+    background-color: #27ae60;
+    color: #fff;
+    border-radius: 6px;
+    padding: 6px 10px;
+    transition: transform 0.2s;
+}
+table button:first-child:hover {
+    transform: scale(1.1);
+}
+
+table button:last-child {
+    background-color: #c0392b;
+    color: #fff;
+    border-radius: 6px;
+    padding: 6px 10px;
+    transition: transform 0.2s;
+}
+table button:last-child:hover {
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@keyframes slideDown {
+    0% {transform: translateY(-20px); opacity:0;}
+    100% {transform: translateY(0); opacity:1;}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-content { margin-left: 200px; }
+    form#appointmentForm select,
+    form#appointmentForm input,
+    form#appointmentForm button { flex: 1 1 100%; }
+    table th, table td { font-size: 12px; padding: 6px; }
+}
