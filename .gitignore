@@ -1,0 +1,28 @@
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.sln.docstates
+
+# Build folders
+bin/
+obj/
+Debug/
+Release/
+
+# VS Code
+.vscode/
+
+# Frontend files
+node_modules/
+dist/
+.env
+
+# Database files or secrets
+appsettings.Development.json
+*.mdf
+*.ldf
+
+# Computer system trash
+Thumbs.db
+.DS_Store
